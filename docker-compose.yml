@@ -6,22 +6,24 @@ services:
     build: ./web
     expose:
       - "8000"
-      - "9000"
     links:
       - postgres:postgres
     volumes:
       - ./web:/app/web
+      - ./web/staticfiles:/staticfiles
     env_file: env.config
     environment:
       DEBUG: 'True'
-    # command: /usr/local/bin/gunicorn nfe.wsgi:application -w 2 -b :8000
-    command: python manage.py runserver 0.0.0.0:8000
+    #command: bash -c "python manage.py collectstatic --noinput && /usr/local/bin/gunicorn nfe.wsgi:application -w 2 -b :8000"
+    command: bash -c "python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8000"
 
   nginx:
     restart: always
     build: ./nginx/
     ports:
       - "80:80"
+    volumes:
+      - ./web/staticfiles:/staticfiles
     links:
       - web:web
 
