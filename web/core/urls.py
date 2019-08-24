@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.urls import path
-from .views import sync_v1, find_v1
+from django.urls import path, re_path
+from .views import nfe_sync_v1, nfe_find_v1
 
 urlpatterns = [
-    path('v1/sync/', sync_v1),
-    path('v1/find/', find_v1),
+    path('v1/nfe/sync/', nfe_sync_v1),
+    re_path('v1/nfe/find/(?P<access_key>[0-9]{44})', nfe_find_v1),
 ]

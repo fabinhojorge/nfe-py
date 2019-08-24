@@ -25,7 +25,7 @@ SECRET_KEY = 'e9^8i(s^gri-5^m1d&m=z1vsji+pk$ug3d&w)py__c%nelg3)x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if 'DEBUG' in os.environ.keys() and os.environ['DEBUG'].upper() == 'FALSE' else True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -49,6 +49,10 @@ CUSTOM_APPS = [
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
+
+REST_FRAMEWORK = {
+
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
