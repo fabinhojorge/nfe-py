@@ -15,7 +15,7 @@ class Nfe(models.Model):
         return "{0}-{1}".format(self.id, self.access_key)
 
     @staticmethod
-    def prepare_nfe(data):
+    def prepare_nfe_and_save(data):
         access_key = data['access_key']
         xml = base64.b64decode(data['xml'])
         soup = BeautifulSoup(xml, "html.parser")
@@ -25,4 +25,14 @@ class Nfe(models.Model):
         else:
             value = None
 
-        return Nfe(access_key=access_key, xml=xml, value=value)
+        nfe = Nfe(access_key=access_key, xml=xml, value=value)
+
+        r = {'access_key': nfe.access_key, 'activity': '', }
+
+        if Nfe.objects.filter(access_key=nfe.access_key).exists():
+            r['activity'] = 'no_change'
+        else:
+            nfe.save()
+            r['activity'] = 'new'
+
+        return r
