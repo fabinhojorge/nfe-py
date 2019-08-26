@@ -1,5 +1,5 @@
 # nfe-py
-This projects consumes the Arquivei's API to fetch a list of NFE
+This projects consumes the Arquivei's API to fetch a list of NFEs
 
 
 
@@ -29,3 +29,21 @@ The problem is that it is supposed to be the last, so the next should be empty i
 All the requests to https://sandbox-api.arquivei.com.br/v1/nfe/received?cursor=291&limit=50 returns the same address in page.next
 
 ## Screen Shots
+
+Sync valid first request (New)
+![Database Empty](assets/sync_valid_new.png)
+
+Sync valid any other request (No change)
+![Database Empty](assets/sync_valid_no_change.png)
+
+Sync error 500
+![Sync error 500](assets/request_error500.png)
+
+Find but when there are no data synchronized 
+![Find Database empty](assets/database_empty.png)
+
+Valid request for Find
+![Find valid request](assets/find_valid_request.png)
+
+Access Key was not find
+![Find invalid request](assets/find_wrong_access_key.png)
