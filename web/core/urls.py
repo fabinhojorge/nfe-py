@@ -18,6 +18,6 @@ from django.urls import path, re_path
 from .views import nfe_sync_v1, nfe_find_v1
 
 urlpatterns = [
-    path('v1/nfe/sync/', nfe_sync_v1),
-    re_path('v1/nfe/find/(?P<access_key>[0-9]{44})', nfe_find_v1),
+    path('v1/nfe/sync/', nfe_sync_v1, name='nfe_sync'),
+    re_path('v1/nfe/find/(?P<access_key>[0-9]{44})', nfe_find_v1, name='nfe_find'),
 ]
