@@ -63,6 +63,11 @@ The project have some configurations:
 
 ## Screen Shots
 
+__Tests__
+_(It was executed inside the web docker environment with the command: python mana.ge test)_
+![Tests](assets/tests.png)
+
+
 __Sync valid - First request (new)__ 
 ![Database Empty](assets/sync_valid_new.png)
 
@@ -80,3 +85,4 @@ __Find - Valid request__
 
 __Find - Access Key was not found__
 ![Find invalid request](assets/find_wrong_access_key.png)
+
